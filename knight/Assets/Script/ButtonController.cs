@@ -8,8 +8,17 @@ public class ButtonController : MonoBehaviour
 {
     public void moveScene(string pageName)
     {
+
         SceneManager.LoadScene(pageName);
-        SfxManager.sfx.Audio.PlayOneShot(SfxManager.sfx.Click);
+        if (pageName == "Control Intro1" || pageName == "Intro" || pageName == "Main View")
+        {
+            SfxManager.sfx.Audio.PlayOneShot(SfxManager.sfx.Click);
+        }
+
+        else
+        {
+            SfxManager.sfx.Audio.Stop();
+        }
     }
     public void QuitGame()
     {

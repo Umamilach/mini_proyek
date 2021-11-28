@@ -13,9 +13,4 @@ public class musicLoop : MonoBehaviour
         musicSource.PlayScheduled(AudioSettings.dspTime + musicStart.length);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -80,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
             isDead = true;
             anim.SetBool("isDead", isDead);
             this.enabled = false;
+            StartCoroutine("MoveToMainView");
         }
 
 
@@ -94,10 +95,11 @@ public class PlayerMovement : MonoBehaviour
             print("player dead");
             // player mati dan semua pergerakkan didisabled
             GetComponent<PlayerAttack>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
             isDead = true;
             anim.SetBool("isDead", isDead);
             this.enabled = false;
-            SceneManager.LoadScene("Main View");
+            StartCoroutine("MoveToMainView");
         }
 
         if (col.tag == "Finish")
@@ -118,5 +120,12 @@ public class PlayerMovement : MonoBehaviour
             body.velocity = new Vector2(body.velocity.x, jumpPower);
             isGrounded = false;
         }
+    }
+
+    IEnumerator MoveToMainView()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("Main View");
+
     }
 }
